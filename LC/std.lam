@@ -1,0 +1,31 @@
+-- standard library for untyped lambda calculus
+-- just some church encoding
+-- io needs extra command.
+
+-- numbers --
+-- 0 = \f x -> x
+-- 1 = \f x -> f x
+
+let add = \m n f x -> m f (n f x)
+let succ = \n f x -> f (n f x)
+let mult = \m n f x -> m (n f) x
+let expt = \m n -> n m
+
+-- boolean --
+-- true = \x y -> x
+-- false = \x y -> y
+
+let and = \p q -> p q p
+let or = \p q -> p p q
+let if = \p x y -> p x y
+let ifAlt = \p -> p
+let not = \p -> p false true
+let notAlt = \p x y -> p y x
+
+-- pair --
+let pair = \x y z -> z x y
+let fst = \p -> p #t
+let snd = \p -> p #f
+
+-- combinators --
+let Y = \f -> (\x -> F (x x)) (\x -> f (x x))

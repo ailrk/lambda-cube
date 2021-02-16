@@ -3,23 +3,9 @@
 
 module Main where
 
-{-@ Just lambda calculus
-    Use church encodings to represent values.
-    snippet1:
-      let -- integer n is encoded as applying f by n times.
-          0 = \f x -> x
-          1 = \f x -> f x
-          2 = \f x -> f (f x)
-          -- fᵐ⁺ⁿ(x) = fᵐ(fⁿ(x))
-          plus = \m n f x -> m f (n f x)
-          -- succ (n) = n + 1 β≡ plus n 1
-          succ = \n f x -> f (n f x)
-          -- fᵐˣⁿ(x) = (fⁿ)ᵐ(x)
-          mult = \m n f x -> m (n f) x
-          expt = \m n -> n m
-
-       in mul (exp 2 3) 2
- @-}
+-- untyped lambda calculus with let extension
+-- special fuction print and read are added as io primitive.
+-- a file based module system with name space is added.
 
 import           Data.Maybe           as M
 import           Debug.Trace
@@ -151,7 +137,7 @@ lit = Lit <$> (try boolLit <|> intLit)
         _    -> error $ "failed to parse literal: " ++ v
     intLit = LInt <$> integer
 
--- evaluator
+-- evaluator --
 -- lambda calculus has this renaming thing needs to take care of.
 -- in application, when free variable is bound, all occurence
 
@@ -162,6 +148,7 @@ eval env (Var n) = case lookup n env of
 eval _ t = t
 
 
+-- reduction rules --
 betaReduction :: Env -> Expr -> Expr
 betaReduction = undefined
 
