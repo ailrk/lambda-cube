@@ -124,7 +124,7 @@ Typing    Γ ⊢ e:σ
 
 A generalization of lambda cube, allows any number of sorts and dependencies between them.
 
-**Big idea:**
+**big idea:**
 ```
   Γ, x:A ⊢ b:B
 ----------------------
