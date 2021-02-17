@@ -25,6 +25,7 @@ executable LC
   build-depends:
       base >=4.7 && <5
     , parsec
+    , pretty-show
   default-language: Haskell2010
 
 -- simply typed lambda calculus
@@ -38,8 +39,8 @@ executable STLC
   build-depends:
       base >=4.7 && <5
     , parsec
+    , pretty-show
   default-language: Haskell2010
-
 
 -- pcf
 executable PCF
@@ -52,6 +53,7 @@ executable PCF
   build-depends:
       base >=4.7 && <5
     , parsec
+    , pretty-show
   default-language: Haskell2010
 
 
