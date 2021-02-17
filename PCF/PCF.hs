@@ -1,8 +1,8 @@
 module Main where
 
-{-@ Programming computable fucntions (PCF)
-  A simple extension on typed lambda calculus.
-@-}
+-- Programming computable fucntions (PCF)
+-- A simple extension on typed lambda calculus.
+--
 
 main = undefined
 

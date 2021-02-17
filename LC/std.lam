@@ -12,8 +12,8 @@ let mult = \m n f x -> m (n f) x
 let expt = \m n -> n m
 
 -- boolean --
--- true = \x y -> x
--- false = \x y -> y
+-- #t = \x y -> x
+-- #f = \x y -> y
 
 let and = \p q -> p q p
 let or = \p q -> p p q
