@@ -15,7 +15,7 @@ import           Text.Parsec.String
 import qualified Text.Parsec.Token    as Tok
 
 
-main = undefined
+main = putStrLn "From LC"
 
 test = readFile "LC.lam"
 

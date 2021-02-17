@@ -1,0 +1,58 @@
+cabal-version: 1.12
+
+name: lambda-cube
+version:       0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/haskellwikibook#readme>
+homepage:       https://github.com/githubuser/lambda-cube#readme
+bug-reports:    https://github.com/githubuser/lambda-cube/issues
+author:         Author name here
+maintainer:     example@example.com
+copyright:      2020 Author name here
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+
+-- lambda calculus
+executable LC
+  main-is: LC.hs
+  other-modules:
+      Paths_lambda_cube
+  hs-source-dirs:
+    LC
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , parsec
+  default-language: Haskell2010
+
+-- simply typed lambda calculus
+executable STLC
+  main-is: STLC.hs
+  other-modules:
+      Paths_lambda_cube
+  hs-source-dirs:
+    STLC
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , parsec
+  default-language: Haskell2010
+
+
+-- pcf
+executable PCF
+  main-is: PCF.hs
+  other-modules:
+      Paths_lambda_cube
+  hs-source-dirs:
+    PCF
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , parsec
+  default-language: Haskell2010
+
+
+
