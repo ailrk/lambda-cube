@@ -1,17 +1,7 @@
 ## Lambda cube and more ++
-Learn some type systems by doing.
+Learn some type theory by doing.
 
-```
-      λω───────────λC
-     /│           /│
-    / │          / │
-   λ2─────────λP2  │
-   │  │        │   │
-   │  λω_──────│───λPω_
-   │  /        │  /
-   │ /         │ /
-   λ→ ─────────λP
-```
+![lambda-cube](./lambdacube.png)
 
 #### List of languages
 - lambda calculus `cabal run LC`

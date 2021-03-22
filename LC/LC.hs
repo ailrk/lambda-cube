@@ -17,7 +17,7 @@ import qualified Text.Parsec.Token    as Tok
 
 main = putStrLn "From LC"
 
-test = readFile "LC.lam"
+test = readFile "LC/sample.lam"
 
 -- ast --
 type Name = String
@@ -87,12 +87,12 @@ symbol = Tok.symbol lexer
 lang :: Parser [Either (Name, Expr) Expr]
 lang = many line <?> "neither top level binding nor expression"
   where
-    line = (Left <$> try bind) <|> (Right <$> expr)
-    bind = (,) <$> ((symbol "let") *> identifier <* ws <* (symbol "=")) <*> expr
+    line = Left <$> try bind <|> Right <$> expr
+    bind = (,) <$> (symbol "let" *> identifier <* ws <* symbol "=") <*> expr
 
 -- lambda calculus expr, watch out for left recursion
 expr :: Parser Expr
-expr = (try app) <|> lam
+expr = try app <|> lam
 
 -- extended syntax. \a b -> n => \a -> \b -> n
 lam :: Parser Expr
@@ -115,7 +115,7 @@ app = do
 
 -- avoid left recursion
 term' :: Parser Expr
-term' = ((try lit) <|> (try var) <|> (between (char '(') (char ')') expr)) <* ws
+term' = (try lit <|> try var <|> between (char '(') (char ')') expr) <* ws
 
 -- context sensitive. It's for parsing \x-> x (a b), if a var is followed by a app, group them.
 -- some traceback ticks.
@@ -130,7 +130,7 @@ lit :: Parser Expr
 lit = Lit <$> (try boolLit <|> intLit)
   where
     boolLit = do
-      v <- (try (string "#t")) <|> string "#f"
+      v <- try (string "#t") <|> string "#f"
       return . LBool $ case v of
         "#t" -> True
         "#f" -> False
